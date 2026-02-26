@@ -59,8 +59,8 @@ jobs:
 
       # Setup Rust
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-
-      - uses: Swatinem/rust-cache@v2
+        with:
+          target: 'wasm32-wasip1'
 
       # Setup Node.js with corepack
       - uses: actions/setup-node@v4
