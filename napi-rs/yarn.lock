@@ -1717,6 +1717,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^24.1.0":
+  version: 24.10.15
+  resolution: "@types/node@npm:24.10.15"
+  dependencies:
+    undici-types: "npm:~7.16.0"
+  checksum: 10c0/5c688efe22b660fa1f21a4c8b1b9c9deae7db7f174e1c4c82799e6395ebfcdf5b97dac137814616be167e636ae77a4ffa5d9e871cbe6796811abea3628ff6dda
+  languageName: node
+  linkType: hard
+
 "@vitest/expect@npm:4.0.18":
   version: 4.0.18
   resolution: "@vitest/expect@npm:4.0.18"
@@ -2292,6 +2301,7 @@ __metadata:
     "@swc/types": "npm:^0.1.25"
     "@taplo/cli": "npm:^0.7.0"
     "@tybys/wasm-util": "npm:^0.10.0"
+    "@types/node": "npm:^24.1.0"
     oxlint: "npm:^1.14.0"
     prettier: "npm:^3.6.2"
     tinybench: "npm:^6.0.0"
@@ -2887,6 +2897,13 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/34d2a8e23eb8e0d1875072064d5e1d9c102e0bdce56a10a25c0b917b8aa9001a9cf5c225df12497e99da107dc379360bc138163c66b55b95f5b105b50578067e
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~7.16.0":
+  version: 7.16.0
+  resolution: "undici-types@npm:7.16.0"
+  checksum: 10c0/3033e2f2b5c9f1504bdc5934646cb54e37ecaca0f9249c983f7b1fc2e87c6d18399ebb05dc7fd5419e02b2e915f734d872a65da2e3eeed1813951c427d33cc9a
   languageName: node
   linkType: hard
 
