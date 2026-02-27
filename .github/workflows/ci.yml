@@ -74,4 +74,4 @@ jobs:
         run: yarn install
 
       - name: Run E2E test
-        run: cargo build --target wasm32-wasip1 --release && vitest run
+        run: cargo build -p lingui_macro --target wasm32-wasip1 --release && vitest run
