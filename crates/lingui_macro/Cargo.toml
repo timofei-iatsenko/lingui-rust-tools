@@ -21,5 +21,4 @@ swc_core = { workspace = true, features = [
   "ecma_parser",
   "common",
   "testing_transform",
-  "base"
 ] }

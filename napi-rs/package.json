@@ -58,8 +58,7 @@
     "prepublishOnly": "yarn build:ts && napi prepublish -t npm",
     "test": "vitest run",
     "preversion": "napi build --platform && git add .",
-    "version": "napi version",
-    "prepare": "husky"
+    "version": "napi version"
   },
   "devDependencies": {
     "@emnapi/core": "^1.8.1",
