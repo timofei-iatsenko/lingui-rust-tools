@@ -26,8 +26,9 @@
     ".": "./target/wasm32-wasip1/release/lingui_macro_plugin.wasm"
   },
   "scripts": {
-    "prepublishOnly": "cargo build-wasi --release",
-    "test:e2e": "cargo build-wasi --release && vitest run"
+    "build:binary": "cargo build -p lingui_macro --target wasm32-wasip1 --release",
+    "prepublishOnly": "yarn build:binary",
+    "test:e2e": "yarn build:binary && vitest run"
   },
   "files": [],
   "peerDependencies": {
