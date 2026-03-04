@@ -1,10 +1,10 @@
 {
   "name": "lingui-swc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lingui Extractor Implementation using Rust and SWC",
   "license": "MIT",
   "repository": {
-    "url": "timofei-iatsenko/lingui-rust-tools",
+    "url": "https://github.com/timofei-iatsenko/lingui-rust-tools.git",
     "directory": "packages/lingui-swc"
   },
   "keywords": [
@@ -55,7 +55,7 @@
     "format:toml": "taplo format",
     "format:rs": "cargo fmt",
     "lint": "oxlint .",
-    "prepublishOnly": "yarn build:ts && napi prepublish -t npm",
+    "prepublishOnly": "yarn build:ts && napi prepublish -t npm --gh-release false",
     "test": "vitest run",
     "preversion": "napi build --platform && git add .",
     "version": "napi version"
