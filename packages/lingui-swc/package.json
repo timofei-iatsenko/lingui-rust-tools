@@ -55,7 +55,7 @@
     "format:toml": "taplo format",
     "format:rs": "cargo fmt",
     "lint": "oxlint .",
-    "prepublishOnly": "yarn build:ts && napi prepublish -t npm --gh-release false",
+    "prepublishOnly": "yarn build:ts && napi prepublish -t npm --no-gh-release",
     "test": "vitest run",
     "preversion": "napi build --platform && git add .",
     "version": "napi version"
