@@ -74,4 +74,5 @@ jobs:
         run: yarn install
 
       - name: Run E2E test
+        working-directory: ./packages/lingui-macro
         run: yarn test:e2e
