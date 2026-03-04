@@ -3,6 +3,10 @@
   "version": "0.0.2",
   "description": "Lingui Extractor Implementation using Rust and SWC",
   "license": "MIT",
+  "repository": {
+    "url": "timofei-iatsenko/lingui-rust-tools",
+    "directory": "packages/lingui-swc"
+  },
   "keywords": [
     "napi-rs",
     "NAPI",
