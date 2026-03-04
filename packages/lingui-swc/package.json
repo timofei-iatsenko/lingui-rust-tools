@@ -1,6 +1,6 @@
 {
   "name": "lingui-swc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Lingui Extractor Implementation using Rust and SWC",
   "license": "MIT",
   "keywords": [
@@ -71,5 +71,16 @@
     "typescript": "^5.9.2",
     "vitest": "^4.0.18"
   },
-  "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8"
+  "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8",
+  "optionalDependencies": {
+    "lingui-swc-darwin-x64": "0.0.2",
+    "lingui-swc-win32-x64-msvc": "0.0.2",
+    "lingui-swc-linux-x64-gnu": "0.0.2",
+    "lingui-swc-linux-x64-musl": "0.0.2",
+    "lingui-swc-darwin-arm64": "0.0.2",
+    "lingui-swc-linux-arm64-gnu": "0.0.2",
+    "lingui-swc-linux-arm64-musl": "0.0.2",
+    "lingui-swc-win32-arm64-msvc": "0.0.2",
+    "lingui-swc-android-arm64": "0.0.2"
+  }
 }
