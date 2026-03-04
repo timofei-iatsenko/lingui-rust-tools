@@ -1,7 +1,7 @@
 name: CI
 env:
   DEBUG: napi:*
-  APP_NAME: lingui-extractor-swc
+  APP_NAME: lingui-swc
   MACOSX_DEPLOYMENT_TARGET: '10.13'
   CARGO_INCREMENTAL: '1'
 on:
@@ -23,7 +23,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: ./napi-rs
+    working-directory: ./packages/lingui-swc
 
 jobs:
   lint:
@@ -134,8 +134,8 @@ jobs:
           name: bindings-${{ matrix.settings.target }}
 
           path: |
-            ./napi-rs/${{ env.APP_NAME }}.*.node
-            ./napi-rs/${{ env.APP_NAME }}.*.wasm
+            ./packages/lingui-swc/${{ env.APP_NAME }}.*.node
+            ./packages/lingui-swc/${{ env.APP_NAME }}.*.wasm
           if-no-files-found: error
   #  build-freebsd:
   #    runs-on: ubuntu-latest
@@ -180,7 +180,7 @@ jobs:
   #        uses: actions/upload-artifact@v6
   #        with:
   #          name: bindings-freebsd
-  #          path: ./napi-rs/${{ env.APP_NAME }}.*.node
+  #          path: ./packages/lingui-swc/${{ env.APP_NAME }}.*.node
   #          if-no-files-found: error
   test-macOS-windows-binding:
     name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
@@ -217,7 +217,7 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: bindings-${{ matrix.settings.target }}
-          path: ./napi-rs
+          path: ./packages/lingui-swc
       - name: List packages
         run: ls -R .
         shell: bash
@@ -270,7 +270,7 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: bindings-${{ matrix.target }}
-          path: ./napi-rs
+          path: ./packages/lingui-swc
       - name: List packages
         run: ls -R .
         shell: bash
@@ -284,7 +284,7 @@ jobs:
       - name: Test bindings
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}/napi-rs:/app \
+            -v ${{ github.workspace }}/packages/lingui-swc:/app \
             -w /app \
             --platform ${{ steps.docker.outputs.PLATFORM }} \
             ${{ steps.docker.outputs.IMAGE }} \
@@ -314,7 +314,7 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v7
         with:
-          path: ./napi-rs/artifacts
+          path: ./packages/lingui-swc/artifacts
       - name: Move artifacts
         run: yarn artifacts
       - name: List packages

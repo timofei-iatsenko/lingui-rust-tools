@@ -1,11 +1,7 @@
 {
-  "name": "lingui-extractor-swc",
+  "name": "lingui-swc",
   "version": "0.0.1",
   "description": "Lingui Extractor Implementation using Rust and SWC",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/napi-rs/package-template.git"
-  },
   "license": "MIT",
   "keywords": [
     "napi-rs",
@@ -24,7 +20,7 @@
     ".": "./dist/index.js"
   },
   "napi": {
-    "binaryName": "lingui-extractor-swc",
+    "binaryName": "lingui-swc",
     "targets": [
       "x86_64-apple-darwin",
       "x86_64-pc-windows-msvc",
