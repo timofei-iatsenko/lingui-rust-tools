@@ -43,10 +43,9 @@ cargo clippy --all-targets --all-features -- -D warnings
 ## Building for production
 
 ```bash
-# (alias for `cargo build --target wasm32-wasip1`)
-cargo build-wasi --release
+cargo build -p lingui_macro --target wasm32-wasip1 --release
 ```
-Then wasm binary would be on the path: `./target/wasm32-wasip1/release/lingui_macro_plugin.wasm`
+Then wasm binary would be on the path: `./target/wasm32-wasip1/release/lingui_macro.wasm`
 
 You can check it in your own project or in the `examples/nextjs-13` example in this repo by specifying full path to the WASM binary:
 
@@ -55,7 +54,7 @@ You can check it in your own project or in the `examples/nextjs-13` example in t
 const nextConfig = {
   experimental: {
     swcPlugins: [
-      ['/Users/tim/projects/lingui-macro-plugin/target/wasm32-wasip1/release/lingui_macro_plugin.wasm', {}],
+      ['/Users/tim/projects/lingui-macro-plugin/target/wasm32-wasip1/release/lingui_macro.wasm', {}],
     ],
   },
 };

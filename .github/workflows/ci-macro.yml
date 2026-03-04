@@ -1,0 +1,77 @@
+name: CI - SWC Macro Plugin
+
+on:
+  pull_request:
+    branches:
+      - main
+      - next
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+  push:
+    branches:
+      - main
+      - next
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          target: 'wasm32-wasip1'
+
+      - name: Check formatting
+        run: cargo fmt --check
+
+      - name: Run clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov
+
+      - name: Generate code coverage
+        run: cargo llvm-cov --all-features --workspace --lcov --output-path lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+  e2e-test:
+    name: E2E Smoke Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Setup Rust
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          target: 'wasm32-wasip1'
+
+      # Setup Node.js with corepack
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run E2E test
+        working-directory: ./packages/lingui-macro
+        run: yarn test:e2e
