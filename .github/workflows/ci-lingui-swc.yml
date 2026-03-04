@@ -1,4 +1,4 @@
-name: CI
+name: CI - Lingui SWC
 env:
   DEBUG: napi:*
   APP_NAME: lingui-swc
