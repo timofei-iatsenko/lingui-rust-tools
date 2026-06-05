@@ -58,6 +58,37 @@ test('parser options: should parse typescript', async () => {
 
 })
 
+test('extracts messages after TypeScript module declarations', async () => {
+  const code = `
+import { t } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
+
+declare module "x" {
+  interface I {
+    a: string;
+  }
+}
+
+const afterModule = <Trans>after module</Trans>;
+
+declare global {
+  interface Window {
+    b: string;
+  }
+}
+
+const afterGlobal = t\`after global\`;
+`
+
+  const result = await extractMessages(code, 'test.tsx')
+
+  expect(result.warnings).toHaveLength(0)
+  expect(result.messages.map((message) => message.message)).toEqual([
+    'after module',
+    'after global',
+  ])
+})
+
 describe('extractMessagesFromFiles', () => {
   test('should extract from multiple files', async () => {
     const filePaths = [
@@ -144,4 +175,3 @@ describe('extractMessagesFromFiles', () => {
     })
   })
 })
-

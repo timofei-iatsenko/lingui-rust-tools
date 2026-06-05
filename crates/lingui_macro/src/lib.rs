@@ -376,15 +376,22 @@ where
         let (use_lingui_source, use_lingui_export) =
             self.ctx.options.runtime_modules.use_lingui.clone();
 
-        self.has_lingui_macro_imports = n.iter().any(|m| {
+        let outer_has_macro_imports = self.has_lingui_macro_imports;
+        let has_direct_macro_imports = n.iter().any(|m| {
             matches!(m,
                 ModuleItem::ModuleDecl(ModuleDecl::Import(imp))
                 if self.ctx.options.macro_packages.contains(&imp.src.value.to_string_lossy())
             )
         });
 
+        self.has_lingui_macro_imports = outer_has_macro_imports || has_direct_macro_imports;
+
         if !self.has_lingui_macro_imports {
             return n;
+        }
+
+        if !has_direct_macro_imports {
+            return n.fold_children_with(self);
         }
 
         self.ctx
@@ -413,6 +420,7 @@ where
         });
 
         n = n.fold_children_with(self);
+        self.has_lingui_macro_imports = outer_has_macro_imports;
 
         if self.ctx.should_add_18n_import {
             n.insert(
@@ -543,7 +551,7 @@ where
 }
 
 pub use self::options::{
-    DescriptorFields, LinguiJsOptions, MacroPackagesConfig, LinguiOptions, RuntimeModulesConfigMap,
+    DescriptorFields, LinguiJsOptions, LinguiOptions, MacroPackagesConfig, RuntimeModulesConfigMap,
     RuntimeModulesConfigMapNormalized,
 };
 
